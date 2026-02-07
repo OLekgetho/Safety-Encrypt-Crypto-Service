@@ -82,12 +82,36 @@ public class HashingService_Impl implements HashingService {
     private BruteForce bruteForce(String line, HashingText hashingText) {
         BruteForce bruteForceoutcome = new BruteForce();
 
-        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(12);
-        if (bCryptPasswordEncoder.matches(line, hashingText.getText())) {
-            bruteForceoutcome.setBruteForceOutcome(true);
-            bruteForceoutcome.setBruteforceText(line);
+        if (hashingText.getHashingAlgorithms() == HashingAlgorithms.Bcrypt) {
+            BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(12);
+            if (bCryptPasswordEncoder.matches(line, hashingText.getText())) {
+                bruteForceoutcome.setBruteForceOutcome(true);
+                bruteForceoutcome.setBruteforceText(line);
+            }
+        } else if (hashingText.getHashingAlgorithms() == HashingAlgorithms.Argon2) {
+            Argon2PasswordEncoder argon2PasswordEncoder = Argon2PasswordEncoder.defaultsForSpringSecurity_v5_8();
+            if (argon2PasswordEncoder.matches(line, hashingText.getText())) {
+                bruteForceoutcome.setBruteForceOutcome(true);
+                bruteForceoutcome.setBruteforceText(line);
+            }
+        }
+        else if (hashingText.getHashingAlgorithms() == HashingAlgorithms.PBKDF2) {
+            Pbkdf2PasswordEncoder pbkdf2PasswordEncoder = Pbkdf2PasswordEncoder.defaultsForSpringSecurity_v5_8();
+            if (pbkdf2PasswordEncoder.matches(line, hashingText.getText())) {
+                bruteForceoutcome.setBruteForceOutcome(true);
+                bruteForceoutcome.setBruteforceText(line);
+            }
+        }
+        else {
+            SCryptPasswordEncoder sCryptPasswordEncoder = SCryptPasswordEncoder.defaultsForSpringSecurity_v5_8();
+            if (sCryptPasswordEncoder.matches(line, hashingText.getText())) {
+                bruteForceoutcome.setBruteForceOutcome(true);
+                bruteForceoutcome.setBruteforceText(line);
+            }
         }
 
         return bruteForceoutcome;
     }
+
+
 }
