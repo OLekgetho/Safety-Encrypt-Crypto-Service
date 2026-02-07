@@ -1,4 +1,4 @@
-package com.olekgetho.safetyencrypt.cryptoservice.entities.encoding;
+package com.olekgetho.safetyencrypt.cryptoservice.entities.hashing;
 
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -12,12 +12,12 @@ import org.springframework.beans.factory.annotation.Value;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class EncodingText {
+public class HashingText {
 
     @NonNull
     @Size(min = 3, max = 15, message = "Text must be between 3 and 15 characters")
     private String text;
 
-    @Value("${default.encodingalgo}")
-    private EncodingAlgorithms encodingAlg;
+    @Value("${default.hashingalgo}")
+    private HashingAlgorithms hashingAlgorithms;
 }
