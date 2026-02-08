@@ -10,6 +10,13 @@ import java.security.SecureRandom;
 @Service
 public class PasswordGeneratorService_Impl implements PasswordGeneratorService {
 
+    /**
+     * Generate a random password composed of uppercase letters, lowercase letters, and digits,
+     * optionally including symbols when configured.
+     *
+     * @param passwordGenerator configuration object providing the password length and whether to include symbols
+     * @return the generated password string containing letters, digits, and symbols if enabled
+     */
     @Override
     public String generatePassword(PasswordGenerator passwordGenerator) {
         String pool = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
