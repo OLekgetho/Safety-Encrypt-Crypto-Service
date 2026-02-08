@@ -24,4 +24,11 @@ public class GlobalExceptionHandler {
 
        return ResponseEntity.badRequest().body(errors);
     }
+
+    @ExceptionHandler(NegativeOrZeroNotAllowedException.class)
+    public ResponseEntity<String> NegativeOrZeroNotAllowedExceptions(
+            NegativeOrZeroNotAllowedException ex
+    ) {
+        return ResponseEntity.badRequest().body(ex.getMessage());
+    }
 }
