@@ -16,8 +16,4 @@ public class PasswordGenerator {
     private int lengthOfPassword;
 
     private boolean includeSymbols = false;
-
-    private boolean includeLetters = false;
-
-    private boolean includeNumbers = true;
 }
