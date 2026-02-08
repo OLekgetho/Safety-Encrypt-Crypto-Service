@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.jspecify.annotations.NonNull;
 import org.springframework.beans.factory.annotation.Value;
+import static com.olekgetho.safetyencrypt.cryptoservice.entities.hashing.HashingAlgorithms.Argon2;
 
 @Getter
 @Setter
@@ -19,5 +20,5 @@ public class HashingText {
     private String text;
 
     @Value("${default.hashingalgo}")
-    private HashingAlgorithms hashingAlgorithms;
+    private HashingAlgorithms hashingAlgorithms = Argon2;
 }
