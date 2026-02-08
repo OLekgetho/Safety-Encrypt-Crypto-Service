@@ -1,6 +1,7 @@
 package com.olekgetho.safetyencrypt.cryptoservice.services.Impl;
 
 import com.olekgetho.safetyencrypt.cryptoservice.entities.passwordGenerator.PasswordGenerator;
+import com.olekgetho.safetyencrypt.cryptoservice.exceptions.NegativeOrZeroNotAllowedException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -77,11 +78,16 @@ class PasswordGeneratorService_ImplTest {
     @Test
     void testGeneratePasswordWithLengthZero() {
         PasswordGenerator config = new PasswordGenerator(0, false);
-        String password = passwordGeneratorService.generatePassword(config);
 
-        assertNotNull(password);
-        assertEquals(0, password.length());
-        assertEquals("", password);
+
+        NegativeOrZeroNotAllowedException negativeOrZeroNotAllowedException =
+                assertThrows(NegativeOrZeroNotAllowedException.class, () -> {
+                    passwordGeneratorService.generatePassword(config);
+                });
+        assertEquals("Password Length must be greater than 0",
+                negativeOrZeroNotAllowedException.getMessage());
+
+
     }
 
     @Test
