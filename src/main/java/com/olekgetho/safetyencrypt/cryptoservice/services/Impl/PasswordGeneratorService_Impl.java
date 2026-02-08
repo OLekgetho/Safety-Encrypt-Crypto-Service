@@ -3,7 +3,6 @@ package com.olekgetho.safetyencrypt.cryptoservice.services.Impl;
 import com.olekgetho.safetyencrypt.cryptoservice.entities.passwordGenerator.PasswordGenerator;
 import com.olekgetho.safetyencrypt.cryptoservice.exceptions.NegativeOrZeroNotAllowedException;
 import com.olekgetho.safetyencrypt.cryptoservice.services.PasswordGeneratorService;
-import org.apache.commons.lang.RandomStringUtils;
 import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
