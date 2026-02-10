@@ -12,7 +12,12 @@ FROM eclipse-temurin:21-jre-alpine-3.23
 
 WORKDIR /app
 
+RUN addgroup -S spring && adduser -S spring -G spring
+
 COPY --from=build /app/target/*.jar app.jar
+RUN chown spring:spring app.jar
+
+USER spring
 
 EXPOSE 8100
 

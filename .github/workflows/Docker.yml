@@ -27,4 +27,3 @@ jobs:
 
       - name: Push Docker image
         run: docker push ${{ secrets.DOCKER_USERNAME }}/safety_encrypt:crypto_service-${{ env.VERSION }}
-}
