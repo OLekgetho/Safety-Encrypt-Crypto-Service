@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: crypto-service
+  profiles:
+    active: dev
+
+default:
+  encodingalgo: Base64
+  hashingalgo: Argon2
+  passwordlength: 8
+
+
+server:
+  port: 8100
+
+eureka:
+  client:
+    service-url:
+      defaultZone=http://eureka-server:8761/eureka:
