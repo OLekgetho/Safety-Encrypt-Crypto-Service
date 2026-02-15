@@ -26,5 +26,5 @@ management:
 
   otlp:
     tracing:
-      endpoint: ${OTEL_TRACING_ENDPOINT:http://otel-collector:4318/v1/traces}
+      endpoint: ${OTEL_TRACING_ENDPOINT:http://otel-collector:4319/v1/traces}
 

@@ -6,7 +6,7 @@ receivers:
 
 exporters:
   otlphttp:
-    endpoint: http://jaeger:14250/api/traces
+    endpoint: http://jaeger:4318/v1/traces
 
 service:
   pipelines:
