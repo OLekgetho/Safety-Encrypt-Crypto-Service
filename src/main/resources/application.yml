@@ -16,4 +16,15 @@ server:
 eureka:
   client:
     service-url:
-      defaultZone: http://eureka-server:8761/eureka
+      defaultZone: ${EUREKA_ENDPOINT:http://eureka-server:8761/eureka}
+
+
+management:
+  tracing:
+    sampling:
+      probability: ${OTEL_TRACING_SAMPLING_PROBABILITY:0.1}
+
+  otlp:
+    tracing:
+      endpoint: ${OTEL_TRACING_ENDPOINT:http://otel-collector:4318/v1/traces}
+
