@@ -24,15 +24,4 @@ public class HashingController {
     ) {
         return ResponseEntity.ok(hashingService.hashingText(hashingText));
     }
-
-    @PostMapping("/upload-csv")
-    public ResponseEntity<BruteForce> uploadCsvFileBrute(
-            @RequestParam("file") MultipartFile file,
-            @RequestParam("text") String text,
-            @RequestParam("hashingAlgorithms") HashingAlgorithms hashingAlgorithms
-            ) {
-
-        HashingText hashingText = new HashingText(text, hashingAlgorithms);
-        return ResponseEntity.ok(hashingService.bruteForcePassword(file, hashingText));
-    }
 }
