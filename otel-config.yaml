@@ -6,10 +6,10 @@ receivers:
 
 exporters:
   otlphttp:
-    endpoint: http://jaeger:4318/api/traces
+    endpoint: http://jaeger:14250/api/traces
 
 service:
   pipelines:
     traces:
       receivers: [otlp]
-      exporters: [otlphttp]
+      exporters: [jaeger]
