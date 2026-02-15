@@ -5,13 +5,11 @@ receivers:
       grpc:
 
 exporters:
-  jaeger:
-    endpoint: jaeger:14250
-    tls:
-      insecure: true
+  otlphttp:
+    endpoint: http://jaeger:4318/api/traces
 
 service:
   pipelines:
     traces:
       receivers: [otlp]
-      exporters: [jaeger]
+      exporters: [otlphttp]
