@@ -27,6 +27,11 @@ public class BruteForceController {
             @RequestParam("text") String text,
             @RequestParam("hashingAlgorithms") HashingAlgorithms hashingAlgorithms
     ) {
+        if (file.isEmpty() || text.trim().isEmpty() || text.isBlank()) {
+            BruteForce emptyFile = new BruteForce();
+            emptyFile.setBruteforceText("File Empty or text is Blank");
+            return ResponseEntity.badRequest().body(emptyFile);
+        }
 
         HashingText hashingText = new HashingText(text, hashingAlgorithms);
         return ResponseEntity.ok(bruteForceService.bruteForcePassword(file, hashingText));

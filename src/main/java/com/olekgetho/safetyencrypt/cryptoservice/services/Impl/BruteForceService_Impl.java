@@ -23,6 +23,7 @@ public class BruteForceService_Impl implements BruteForceService {
         BruteForce outComeBruteForce = new BruteForce();
 
         if (csvFile.isEmpty()) {
+            outComeBruteForce.setBruteForceOutcome(false);
             outComeBruteForce.setBruteforceText("File Empty");
             return outComeBruteForce;
         }
@@ -41,12 +42,13 @@ public class BruteForceService_Impl implements BruteForceService {
                 }
             }
 
+            outComeBruteForce.setBruteForceOutcome(false);
             outComeBruteForce.setBruteforceText("No match found in the file");
             return outComeBruteForce;
 
         } catch (Exception e) {
             outComeBruteForce.setBruteForceOutcome(false);
-            outComeBruteForce.setBruteforceText("Error processing file " + e.getMessage());
+            outComeBruteForce.setBruteforceText("Error processing file ");
             return outComeBruteForce;
         }
     }
