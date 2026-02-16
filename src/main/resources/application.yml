@@ -24,10 +24,11 @@ management:
     sampling:
       probability: ${OTEL_TRACING_SAMPLING_PROBABILITY:1.0}
 
-  otlp:
+  opentelemetry:
     tracing:
-      endpoint: ${OTEL_TRACING_ENDPOINT:http://jaeger:4318/v1/traces}
-
+      export:
+        otlp:
+          endpoint: ${OTEL_TRACING_ENDPOINT:http://jaeger:4318/v1/traces}
 
 logging:
   pattern:
