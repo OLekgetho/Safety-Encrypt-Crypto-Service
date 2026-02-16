@@ -18,13 +18,16 @@ eureka:
     service-url:
       defaultZone: ${EUREKA_ENDPOINT:http://eureka-server:8761/eureka}
 
-tracing:
-    endpoint: ${OTEL_TRACING_ENDPOINT:http://jaeger:4318/v1/traces}
 
 management:
   tracing:
     sampling:
       probability: ${OTEL_TRACING_SAMPLING_PROBABILITY:1.0}
+
+  otlp:
+    tracing:
+      endpoint: ${OTEL_TRACING_ENDPOINT:http://jaeger:4318/v1/traces}
+
 
 logging:
   pattern:

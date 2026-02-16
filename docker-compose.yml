@@ -16,7 +16,7 @@ services:
 
 
   crypto-service:
-    image: ofentselekgetho/safety_encrypt:crypto_service-v10
+    image: ofentselekgetho/safety_encrypt:crypto_service-v11
     container_name: crypto-service
     depends_on:
       - eureka-server
