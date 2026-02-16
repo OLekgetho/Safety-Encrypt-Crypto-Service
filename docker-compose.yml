@@ -11,28 +11,16 @@ services:
     ports:
       - "16686:16686"
       - "4318:4318"
-      - "14250:14250"
-
-  otel-collector:
-    image: otel/opentelemetry-collector:latest
-    container_name: otel-collector
-    ports:
-      - "4317:4317"
-      - "4319:4319"
-    volumes:
-      - ./otel-config.yaml:/etc/otel/config.yaml
-    command: [ "--config=/etc/otel/config.yaml" ]
-    depends_on:
-      - jaeger
+    environment:
+      - COLLECTOR_OTLP_ENABLED=true
 
 
   crypto-service:
-    image: ofentselekgetho/safety_encrypt:crypto_service-v8
+    image: ofentselekgetho/safety_encrypt:crypto_service-v10
     container_name: crypto-service
     depends_on:
       - eureka-server
       - api-gateway
-      - otel-collector
     ports:
       - 8100:8100
 
